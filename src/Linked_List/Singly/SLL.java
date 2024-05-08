@@ -4,7 +4,7 @@ public class SLL<E> {
 
     private SNode<E> head;
     private SNode<E> tail;
-    private long size;
+    private int size;
 
     public SLL()
     {
@@ -13,9 +13,13 @@ public class SLL<E> {
         size = 0;
     }
 
-    void  add(E n)
+    public int getSize()
     {
-        if(size==0)
+        return size;
+    }
+    public void  add(E n)
+    {
+        if(head==null)
         {
             head = new SNode<E>(n);
             tail = head;
@@ -27,7 +31,7 @@ public class SLL<E> {
         size++;
     }
 
-    void addFirst(E n)
+    public void addFirst(E n)
     {
         if(size==0)
         {
@@ -38,25 +42,80 @@ public class SLL<E> {
         size++;
     }
 
-    void addLast(E n)
+    public void addNext(SNode<E> p, E n) //add n next to p
     {
-        if(size==0)
+        SNode<E> t = head;
+        while(t!=null)
         {
-            add(n);
+            if(t.equals(p))
+            {
+                SNode<E> temp = new SNode<>(n,t.getNext());
+                t.setNext(temp);
+                size++;
+                return;
+            }
+            t = t.getNext();
         }
     }
-    void addNext(SNode<E> p, E n) //add n next to p
-    {
 
+
+    public void remove(SNode<E> n)
+    {
+        if(head==null) return;
+        if(head.equals(n))
+        {
+            size--;
+            head = head.getNext();
+            return;
+        }
+        SNode<E> t = head;
+        while(t!=null)
+        {
+            if(t.getNext().equals(n))
+            {
+                t.setNext(t.getNext().getNext());
+                size--;
+                return;
+            }
+            t = t.getNext();
+        }
     }
 
-
-    void remove(SNode<E> n)
+    public void remove_last()
     {
-
+        if(head==null)return;
+        if(size==1)
+        {
+            head = tail = null;
+            return;
+        }
+        SNode<E> t = head;
+        for(int i=0;i<size-1;i++)
+        {
+            t = t.getNext();
+        }
+        t.setNext(null);
+        size--;
+        tail = t;
     }
+    public void remove_first()
+    {
+        if(head==null)return;
+        head = head.getNext();
 
-
-
-
+        size--;
+    }
+    public E getFirst()
+    {
+        if(tail==null)
+        {
+            return null;
+        }
+        return head.getData();
+    }
+    public E getLast()
+    {
+        if(tail==null) return null;
+        return tail.getData();
+    }
 }

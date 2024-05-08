@@ -1,4 +1,4 @@
-package Stack;
+package Stack.Exception;
 
 public class FullStackException extends RuntimeException {
     private static final long serialVersionUID = 1L;

@@ -1,4 +1,4 @@
-package Stack;
+package Stack.ArrayStack;
 
 class node {
     int data;
@@ -16,17 +16,16 @@ public class ArrayStackTest {
 
     public static void main(String[] args)
     {
-
-        ArrayStack<node> arrayStack = new ArrayStack<node>(100);
+        ArrayStack<Integer> arrayStack = new ArrayStack<Integer>(100);
         for(int i=0;i<10;i++)
         {
-            arrayStack.push(new node(i));
+            arrayStack.push(i);
         }
         while(!arrayStack.isEmpty())
         {
             System.out.println(arrayStack.pop());
         }
-        System.out.println(arrayStack.pop());
+        //System.out.println(arrayStack.pop());
     }
 
 

@@ -11,6 +11,7 @@ public class SNode<T> {
         this(null,null);
     }
 
+
     public SNode(T data)
     {
         this(data, null);

@@ -1,6 +1,9 @@
-package Stack;
+package Stack.ArrayStack;
+import Stack.*;
+import Stack.Exception.EmptyStackException;
+import Stack.Exception.FullStackException;
 
-public class ArrayStack<E> implements Stack<E>{
+public class ArrayStack<E> implements Stack<E> {
     private E S[];
     private int size;
     private int top;
